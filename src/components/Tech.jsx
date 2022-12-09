@@ -12,10 +12,6 @@ const Tech = () => {
             })
     }, [])
 
-    const currentDate = new Date();
-    const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
-    console.log(currentDate.toLocaleDateString('fr-fr', options));
-
     return (
         <div className='post'>
             {tech.map((post, index) => {
@@ -26,7 +22,7 @@ const Tech = () => {
                         </ul>
                         <img className='post-image' src={post.urlToImage} alt="article" />
                         <p className='post-description'>{post.content}</p>
-                        <span className='post-date'>{"date: " + post.publishedAt.replace("T", " - heure:").replace("Z", "")}</span><br />
+                        <span className='post-date'>{"Date: " + post.publishedAt.replace("T", " - Heure:").replace("Z", "")}</span><br />
                         <div className='post-link'>
                             <a href={post.url} target="_blank" rel="noreferrer">Voir plus</a>
                         </div>
