@@ -109,3 +109,12 @@ body{
 .post-link a:hover{
     background: black;
 }
+
+@media (max-width: 500px){
+    .post-title{
+        font-size: 1rem;
+    }
+    .post-description{
+        font-size: 1rem;
+    }
+}
