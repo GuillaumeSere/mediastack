@@ -9,7 +9,7 @@
 }
 
 body{
-    background: black;
+    background: rgb(101, 101, 101);
 }
 
 ::-webkit-scrollbar{
@@ -36,7 +36,7 @@ body{
     align-content: space-around;
     width: 100%;
     min-height: 80px;
-    background: black;
+    background: rgb(30, 30, 30);
     color: rgb(164, 164, 164);
     box-shadow: 5px 1px 8px 5px #ffffff ;
 }
@@ -81,7 +81,7 @@ body{
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
     list-style: none;
-    background: black;
+    background: rgb(30, 30, 30);
     height: 8rem;
     color: white;
     padding: 0.5rem;
@@ -94,7 +94,7 @@ body{
 
 .post-title{
     font-size: 1.2rem;
-    color: rgb(2, 255, 2);
+    color: rgb(68, 189, 68);
 }
 
 .post-date{
