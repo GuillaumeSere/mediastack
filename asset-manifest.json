@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mediastack/static/css/main.1b5832fc.css",
+    "main.js": "/mediastack/static/js/main.c8ec4850.js",
+    "index.html": "/mediastack/index.html",
+    "main.1b5832fc.css.map": "/mediastack/static/css/main.1b5832fc.css.map",
+    "main.c8ec4850.js.map": "/mediastack/static/js/main.c8ec4850.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b5832fc.css",
+    "static/js/main.c8ec4850.js"
+  ]
+}
