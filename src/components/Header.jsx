@@ -7,7 +7,7 @@ const Header = () => {
       <NavLink to='/' className="header-link">Tesla</NavLink>
       <NavLink to='/bitcoin' className="header-link">Bitcoin</NavLink>
       <NavLink to='/busines' className="header-link">Busines</NavLink>
-      <NavLink to='/french' className="header-link">French</NavLink>
+      <NavLink to='/french' className="header-link">Trump</NavLink>
       <NavLink to='/tech' className="header-link">TechCrunch</NavLink>
     </div>
   )

@@ -6,10 +6,27 @@ const French = () => {
     const [french, setFrench] = useState([])
 
     useEffect(() => {
-        axios.get(`https://newsapi.org/v2/top-headlines?country=fr&apiKey=${process.env.REACT_APP_API_KEY}`)
+        const source = axios.CancelToken.source();
+        axios.get(`https://newsapi.org/v2/top-headlines?q=trump&apiKey=${process.env.REACT_APP_API_KEY}`,{
+            cancelToken: source.token,
+            headers: {
+                "Accept": "application/json",
+                'User-Agent': 'Mozilla/5.0'
+            }
+        })
             .then((response) => {
                 setFrench(response.data.articles)
             })
+            .catch((error) => {
+                if (axios.isCancel(error)) {
+                    console.log('Request canceled', error.message);
+                } else {
+                    throw error;
+                }
+            });
+        return () => {
+            source.cancel();
+        };
     }, [])
 
   return (

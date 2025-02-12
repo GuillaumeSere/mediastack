@@ -8,10 +8,27 @@ const Busines = () => {
     const [postsPerPage, setPostsPerPage] = useState(9)
 
     useEffect(() => {
-        axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.REACT_APP_API_KEY}`)
+        const source = axios.CancelToken.source();
+        axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.REACT_APP_API_KEY}`,{
+            cancelToken: source.token,
+            headers: {
+                "Accept": "application/json",
+                'User-Agent': 'Mozilla/5.0'
+            }
+        })
             .then((response) => {
                 setBusines(response.data.articles)
             })
+            .catch((error) => {
+                if (axios.isCancel(error)) {
+                    console.log('Request canceled', error.message);
+                } else {
+                    throw error;
+                }
+            });
+        return () => {
+            source.cancel();
+        };
     }, [])
 
     const handlePageChange = (newPage) => {
