@@ -4,6 +4,8 @@ import axios from 'axios'
 const Tech = () => {
 
     const [tech, setTech] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postsPerPage, setPostsPerPage] = useState(12)
 
     useEffect(() => {
         axios.get(`https://newsapi.org/v2/everything?domains=techcrunch.com,thenextweb.com&apiKey=${process.env.REACT_APP_API_KEY}`)
@@ -12,9 +14,15 @@ const Tech = () => {
             })
     }, [])
 
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage)
+    }
+
+    const paginatedPosts = tech.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
+
     return (
         <div className='post'>
-            {tech.map((post, index) => {
+            {paginatedPosts.map((post, index) => {
                 return (
                     <div className='post-cart' key={index}>
                         <ul className='post-list'>
@@ -30,6 +38,13 @@ const Tech = () => {
                 )
             }
             )}
+            <div className='pagination'>
+                {[...Array(Math.ceil(tech.length / postsPerPage))].map((_, index) => (
+                    <button key={index} onClick={() => handlePageChange(index + 1)} className={`pagination-button ${currentPage === index + 1 ? 'active' : ''}`}>
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
         </div>
     )
 }

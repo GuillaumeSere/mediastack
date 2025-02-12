@@ -4,17 +4,25 @@ import axios from 'axios'
 const Bitcoin = () => {
 
     const [bitcoin, setBitcoin] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postsPerPage, setPostsPerPage] = useState(12)
 
     useEffect(() => {
         axios.get(`https://newsapi.org/v2/everything?q=bitcoin&apiKey=${process.env.REACT_APP_API_KEY}`)
             .then((response) => {
                 setBitcoin(response.data.articles)
             })
-    })
+    }, [])
+
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage)
+    }
+
+    const paginatedPosts = bitcoin.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
 
     return (
         <div className='post'>
-            {bitcoin.map((post, index) => {
+            {paginatedPosts.map((post, index) => {
                 return (
                     <div className='post-cart' key={index}>
                         <ul className='post-list'>
@@ -30,6 +38,13 @@ const Bitcoin = () => {
                 )
             }
             )}
+            <div className='pagination'>
+                {[...Array(Math.ceil(bitcoin.length / postsPerPage))].map((_, index) => (
+                    <button key={index} onClick={() => handlePageChange(index + 1)} className={`pagination-button ${currentPage === index + 1 ? 'active' : ''}`}>
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
         </div>
     )
 }

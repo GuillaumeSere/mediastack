@@ -4,6 +4,8 @@ import axios from 'axios'
 const Home = () => {
 
     const [media, setMedia] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postsPerPage, setPostsPerPage] = useState(12)
 
     useEffect(() => {
         axios.get(`https://newsapi.org/v2/everything?q=tesla&apiKey=${process.env.REACT_APP_API_KEY}`)
@@ -12,10 +14,16 @@ const Home = () => {
             })
     }, [])
 
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage)
+    }
+
+    const paginatedPosts = media.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
+
     return (
         <div className='post'>
-            {media.map((post, index) => {
-                 return (
+            {paginatedPosts.map((post, index) => {
+                return (
                     <div className='post-cart' key={index}>
                         <ul className='post-list'>
                             <li className='post-title'>{post.title}</li>
@@ -30,6 +38,13 @@ const Home = () => {
                 )
             }
             )}
+            <div className='pagination'>
+                {[...Array(Math.ceil(media.length / postsPerPage))].map((_, index) => (
+                    <button key={index} onClick={() => handlePageChange(index + 1)} className={`pagination-button ${currentPage === index + 1 ? 'active' : ''}`}>
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
         </div>
     )
 }
