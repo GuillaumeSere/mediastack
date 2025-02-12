@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/mediastack/static/css/main.c8999a4d.css",
-    "main.js": "/mediastack/static/js/main.ecdfb21f.js",
+    "main.js": "/mediastack/static/js/main.c670e1a3.js",
     "index.html": "/mediastack/index.html",
     "main.c8999a4d.css.map": "/mediastack/static/css/main.c8999a4d.css.map",
-    "main.ecdfb21f.js.map": "/mediastack/static/js/main.ecdfb21f.js.map"
+    "main.c670e1a3.js.map": "/mediastack/static/js/main.c670e1a3.js.map"
   },
   "entrypoints": [
     "static/css/main.c8999a4d.css",
-    "static/js/main.ecdfb21f.js"
+    "static/js/main.c670e1a3.js"
   ]
 }
